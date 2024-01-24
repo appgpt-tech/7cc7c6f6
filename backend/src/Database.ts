@@ -3,11 +3,8 @@ import { DataSource } from "typeorm";
 import { DBConfiguration } from "./Configuration";
 import { SettingsEntity } from "./db/Settings.entity";
 //autogenerate imports based on resources
-import { ProductsEntity } from "./db/Products.entity";
-import { CategoriesEntity } from "./db/Categories.entity";
-import { UsersEntity } from "./db/Users.entity";
-import { OrdersEntity } from "./db/Orders.entity";
-import { PaymentsEntity } from "./db/Payments.entity";
+import { ProductEntity } from "./db/Product.entity";
+import { UserEntity } from "./db/User.entity";
 
 export class Database {
   static dbConfiguration: DBConfiguration;
@@ -18,7 +15,7 @@ export class Database {
     let dbConfig: any = dbConfiguration as any;
     //Autogenerate entities array from resource names
 
-    dbConfig.entities = [SettingsEntity, ProductsEntity, CategoriesEntity, UsersEntity, OrdersEntity, PaymentsEntity];
+    dbConfig.entities = [SettingsEntity, ProductEntity, UserEntity];
     Database.ds = new DataSource(dbConfig);
     await Database.ds.initialize();
 
@@ -28,18 +25,15 @@ export class Database {
     await Database.Seed();
   }
   static async Seed() {
-    let data: any = {"Products":[],"Categories":[],"Users":[],"Orders":[],"Payments":[]};
+    let data: any = {"Product":[],"User":[]};
     //Autogenerate multiple such calls ie for each resource and its data object
     let isSeeded = await this.IsSeeded();
     //if (!isSeeded) {
     //forcing app recreation
     if (true){
       console.log('   Seeding database...');
-      await this.SeedResource("ProductsEntity", data.Products);
-await this.SeedResource("CategoriesEntity", data.Categories);
-await this.SeedResource("UsersEntity", data.Users);
-await this.SeedResource("OrdersEntity", data.Orders);
-await this.SeedResource("PaymentsEntity", data.Payments); 
+      await this.SeedResource("ProductEntity", data.Product);
+await this.SeedResource("UserEntity", data.User); 
       await this.SeedResource("SettingsEntity", {
         settingname: "isSeeded",
         settingvalue: "true",
