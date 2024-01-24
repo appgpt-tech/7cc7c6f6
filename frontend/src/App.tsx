@@ -8,10 +8,12 @@ import { authProvider, apInitialize } from "./authProvider";
 import { i18nProvider } from "./i18nProvider";
 import LoginPage, { Login } from "./Login";
 import data from "./data";
-import { ProductList, ProductCreate, ProductEdit} from "./resources/Product";
-import { UserList, UserCreate, UserEdit} from "./resources/User";
-import ProductIcon from "@mui/icons-material/Category";
-import UserIcon from "@mui/icons-material/People"; 
+import { PlayersList, PlayersCreate, PlayersEdit} from "./resources/Players";
+import { MatchesList, MatchesCreate, MatchesEdit} from "./resources/Matches";
+import { NewsList, NewsCreate, NewsEdit} from "./resources/News";
+import PlayersIcon from "@mui/icons-material/SportsSoccer";
+import MatchesIcon from "@mui/icons-material/EventNote";
+import NewsIcon from "@mui/icons-material/Announcement"; 
 // SUPERTOKENS
 import React from "react";
 import SuperTokens, {
@@ -73,18 +75,24 @@ const App = () => (
         dashboard={Dashboard}
         
       >
-    <Resource name="Product" options={{label:"product"}} 
-list={ProductList}
-create={ProductCreate}
-edit={ProductEdit}
+    <Resource name="Players" options={{label:"players"}} 
+list={PlayersList}
+create={PlayersCreate}
+edit={PlayersEdit}
 recordRepresentation="name"
-icon={ProductIcon}/>
-<Resource name="User" options={{label:"user"}} 
-list={UserList}
-create={UserCreate}
-edit={UserEdit}
-recordRepresentation="username"
-icon={UserIcon}/>
+icon={PlayersIcon}/>
+<Resource name="Matches" options={{label:"matches"}} 
+list={MatchesList}
+create={MatchesCreate}
+edit={MatchesEdit}
+recordRepresentation="date"
+icon={MatchesIcon}/>
+<Resource name="News" options={{label:"news"}} 
+list={NewsList}
+create={NewsCreate}
+edit={NewsEdit}
+recordRepresentation="headline"
+icon={NewsIcon}/>
     <CustomRoutes noLayout>
       {/*This renders the login UI on the /auth route*/}
       {getSuperTokensRoutesForReactRouterDom(reactRouterDom)}
