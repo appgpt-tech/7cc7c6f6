@@ -16,7 +16,7 @@ Productid: string;
 Quantity: string;
 
 @Column({nullable: true})
-Total: string;
+Totalprice: string;
 
 @Column({nullable: true})
 Id: string;
