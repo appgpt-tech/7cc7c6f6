@@ -8,16 +8,10 @@ import { authProvider, apInitialize } from "./authProvider";
 import { i18nProvider } from "./i18nProvider";
 import LoginPage, { Login } from "./Login";
 import data from "./data";
-import { ProductsList, ProductsCreate, ProductsEdit} from "./resources/Products";
-import { CategoriesList, CategoriesCreate, CategoriesEdit} from "./resources/Categories";
-import { UsersList, UsersCreate, UsersEdit} from "./resources/Users";
-import { OrdersList, OrdersCreate, OrdersEdit} from "./resources/Orders";
-import { PaymentsList, PaymentsCreate, PaymentsEdit} from "./resources/Payments";
-import ProductsIcon from "@mui/icons-material/ShoppingCart";
-import CategoriesIcon from "@mui/icons-material/Category";
-import UsersIcon from "@mui/icons-material/People";
-import OrdersIcon from "@mui/icons-material/ShoppingBasket";
-import PaymentsIcon from "@mui/icons-material/Payment"; 
+import { ProductList, ProductCreate, ProductEdit} from "./resources/Product";
+import { UserList, UserCreate, UserEdit} from "./resources/User";
+import ProductIcon from "@mui/icons-material/Category";
+import UserIcon from "@mui/icons-material/People"; 
 // SUPERTOKENS
 import React from "react";
 import SuperTokens, {
@@ -79,36 +73,18 @@ const App = () => (
         dashboard={Dashboard}
         
       >
-    <Resource name="Products" options={{label:"products"}} 
-list={ProductsList}
-create={ProductsCreate}
-edit={ProductsEdit}
-recordRepresentation="title"
-icon={ProductsIcon}/>
-<Resource name="Categories" options={{label:"categories"}} 
-list={CategoriesList}
-create={CategoriesCreate}
-edit={CategoriesEdit}
+    <Resource name="Product" options={{label:"product"}} 
+list={ProductList}
+create={ProductCreate}
+edit={ProductEdit}
 recordRepresentation="name"
-icon={CategoriesIcon}/>
-<Resource name="Users" options={{label:"users"}} 
-list={UsersList}
-create={UsersCreate}
-edit={UsersEdit}
-recordRepresentation="name"
-icon={UsersIcon}/>
-<Resource name="Orders" options={{label:"orders"}} 
-list={OrdersList}
-create={OrdersCreate}
-edit={OrdersEdit}
-recordRepresentation="id"
-icon={OrdersIcon}/>
-<Resource name="Payments" options={{label:"payments"}} 
-list={PaymentsList}
-create={PaymentsCreate}
-edit={PaymentsEdit}
-recordRepresentation="id"
-icon={PaymentsIcon}/>
+icon={ProductIcon}/>
+<Resource name="User" options={{label:"user"}} 
+list={UserList}
+create={UserCreate}
+edit={UserEdit}
+recordRepresentation="username"
+icon={UserIcon}/>
     <CustomRoutes noLayout>
       {/*This renders the login UI on the /auth route*/}
       {getSuperTokensRoutesForReactRouterDom(reactRouterDom)}
