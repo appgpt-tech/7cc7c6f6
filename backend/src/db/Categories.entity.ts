@@ -10,6 +10,9 @@ export class CategoriesEntity {
 Name: string;
 
 @Column({nullable: true})
+Description: string;
+
+@Column({nullable: true})
 Id: string;
 
 
