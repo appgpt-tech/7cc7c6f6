@@ -41,7 +41,7 @@ const ListActions = () => (
 );
 const PaymentsTitle = () => {
   const record = useRecordContext();
-  return <span>Payments {record ? `"${ record.Orderid }"` : ""}</span>;
+  return <span>Payments {record ? `"${ record.Id }"` : ""}</span>;
 };
 
 export const PaymentsList = () => (
