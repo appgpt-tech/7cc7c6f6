@@ -41,7 +41,7 @@ const ListActions = () => (
 );
 const OrdersTitle = () => {
   const record = useRecordContext();
-  return <span>Orders {record ? `"${ record.Userid }"` : ""}</span>;
+  return <span>Orders {record ? `"${ record.Id }"` : ""}</span>;
 };
 
 export const OrdersList = () => (
@@ -50,7 +50,7 @@ export const OrdersList = () => (
           <TextField source="Userid" />
 <TextField source="Productid" />
 <TextField source="Quantity" />
-<TextField source="Total" />
+<TextField source="Totalprice" />
 <NumberField source="Id" /><EditButton />
 
         </DatagridConfigurable>
@@ -63,7 +63,7 @@ export const OrdersEdit = () => (
                           <TextInput source="Userid"   />
 <TextInput source="Productid"   />
 <TextInput source="Quantity"   />
-<TextInput source="Total"   />
+<TextInput source="Totalprice"   />
 <NumberInput source="Id"   disabled/>
                       </SimpleForm>
                     </Edit>
@@ -75,7 +75,7 @@ export const OrdersCreate = () => (
                                         <TextInput source="Userid"   />
 <TextInput source="Productid"   />
 <TextInput source="Quantity"   />
-<TextInput source="Total"   />
+<TextInput source="Totalprice"   />
 <NumberInput source="Id"   disabled/>
                                     </SimpleForm>
                                   </Create>
